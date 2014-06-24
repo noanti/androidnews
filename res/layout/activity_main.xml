@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical" xmlns:app="http://schemas.android.com/apk/res/com.coco67.hi">
+
+    <RelativeLayout 
+        android:id="@+id/titlelayout"
+        android:layout_width="match_parent"
+        android:layout_height="45dip"
+        android:background="@color/red"
+        >
+
+        <TextView
+            android:id="@+id/titletv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="115.0dip"
+            android:layout_marginTop="9.0dip"
+            android:text="@string/title"
+            android:textColor="@color/white"         	
+            android:textSize="22sp" />
+        	
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/mainlv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dip"
+        android:layout_weight="1"
+        android:divider="#00000000"
+		android:dividerHeight="7dip">
+    </ListView>
+
+	<com.meetme.android.horizontallistview.HorizontalListView
+	    android:id="@+id/catelv"
+	    android:layout_width="match_parent"
+	    android:layout_height="40dip"
+	    android:background="@color/deepgray" />
+
+</LinearLayout>
