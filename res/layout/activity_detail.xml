@@ -28,7 +28,10 @@
 				        android:id="@+id/newstitle"
 				        android:text="@string/NewsTitle"
 				        android:layout_width="match_parent"
-				        android:layout_height="wrap_content" />
+				        android:layout_height="0dip"
+				        android:layout_marginLeft="5sp"
+				        android:layout_weight="4" 
+				        android:textSize="28sp" />
 		            
 		            <LinearLayout 
 				        android:layout_width="match_parent"
@@ -38,24 +41,37 @@
 				        <TextView
 				            android:id="@+id/newssource"
 				            android:text="@string/NewsSource"
-				            android:layout_width="match_parent"
+				            android:layout_width="wrap_content"
 				            android:layout_height="wrap_content"
-				            android:textColor="@color/gray" />
+				            android:singleLine="false"
+				            android:layout_marginLeft="10sp"
+				            android:textSize="20sp"
+				            android:textColor="@color/black" />
 				        
 				        <TextView
 				            android:id="@+id/newstime"
 				            android:text="@string/NewsTime"
 				            android:layout_width="match_parent"
 				            android:layout_height="wrap_content"
-				            android:textColor="@color/gray" />
+				            android:layout_marginRight="10sp"
+				            android:textSize="20sp"
+				            android:textColor="@color/black" />
 				        
 				    </LinearLayout>
+				    
+		            <ImageView 
+		                android:layout_width="match_parent"
+		                android:layout_height="0dip" />
+		                <!--  android:src="@drawable/line" -->
 			        
 			        <TextView
 				            android:id="@+id/newscontent"
 				            android:text="@string/NewsContent"
-				            android:layout_width="wrap_content"
-				            android:layout_height="0dip"
+				            android:layout_width="match_parent"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:layout_margin="10dp"
+				            android:textSize="25sp"
 				            android:textColor="@color/black" />
 		           
 		       </LinearLayout>
