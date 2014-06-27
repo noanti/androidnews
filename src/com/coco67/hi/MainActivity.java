@@ -3,9 +3,12 @@ package com.coco67.hi;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.coco67.hi.MainActivity;
+import com.coco67.hi.DetailActivity;
 import com.meetme.android.horizontallistview.HorizontalListView;
 
 import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -57,6 +60,8 @@ public class MainActivity extends ActionBarActivity {
 				Toast.makeText(getApplicationContext(), "count:"+arg0.getCount(),
 					     Toast.LENGTH_SHORT).show();
 				
+				Intent intent = new Intent(MainActivity.this, DetailActivity.class);			  
+				startActivity(intent);
 				
 			}
 		});

@@ -6,5 +6,10 @@
     <string name="action_settings">Settings</string>
     <string name="title">呵呵新闻</string>
     <string name="title_activity_detail">DetailActivity</string>
+    <string name="detail_title">hello</string>
+    <string name="NewsTitle">hello</string>
+    <string name="NewsSource">hello</string>
+    <string name="NewsTime">hello</string>
+    <string name="NewsContent">hello</string>
 
 </resources>

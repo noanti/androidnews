@@ -1,8 +1,68 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:orientation="vertical"
+    android:id="@+id/container"
     tools:context="com.coco67.hi.DetailActivity"
-    tools:ignore="MergeRootFrame" />
-
+    tools:ignore="MergeRootFrame" > 
+    
+    <include layout="@layout/detail_title" />
+     
+   <FrameLayout 
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent" >
+       
+       <ScrollView 
+		       android:layout_width="fill_parent"
+		       android:layout_height="match_parent">
+		       
+		       <LinearLayout 
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:orientation="vertical" >
+		            
+		            <TextView
+		                android:textColor="@color/black"
+				        android:id="@+id/newstitle"
+				        android:text="@string/NewsTitle"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content" />
+		            
+		            <LinearLayout 
+				        android:layout_width="match_parent"
+				        android:layout_height="match_parent"
+				        android:orientation="horizontal" >
+				        
+				        <TextView
+				            android:id="@+id/newssource"
+				            android:text="@string/NewsSource"
+				            android:layout_width="match_parent"
+				            android:layout_height="wrap_content"
+				            android:textColor="@color/gray" />
+				        
+				        <TextView
+				            android:id="@+id/newstime"
+				            android:text="@string/NewsTime"
+				            android:layout_width="match_parent"
+				            android:layout_height="wrap_content"
+				            android:textColor="@color/gray" />
+				        
+				    </LinearLayout>
+			        
+			        <TextView
+				            android:id="@+id/newscontent"
+				            android:text="@string/NewsContent"
+				            android:layout_width="wrap_content"
+				            android:layout_height="0dip"
+				            android:textColor="@color/black" />
+		           
+		       </LinearLayout>
+		       
+		   </ScrollView>    
+       
+   </FrameLayout>
+   
+    
+</LinearLayout>
