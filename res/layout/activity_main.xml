@@ -1,9 +1,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.coco67.hi"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray"
-    android:orientation="vertical" xmlns:app="http://schemas.android.com/apk/res/com.coco67.hi">
+    android:orientation="vertical" >
 
     <RelativeLayout 
         android:id="@+id/titlelayout"
@@ -26,7 +27,7 @@
     <ListView
         android:id="@+id/mainlv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dip"
         android:layout_marginTop="7dip"
         android:layout_weight="1"
         android:divider="#00000000"
