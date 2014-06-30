@@ -1,7 +1,12 @@
 package com.coco67.hi;
 
+import java.net.URL;
+
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
+import android.text.Html;
+import android.text.Html.ImageGetter;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -56,6 +61,26 @@ public class DetailActivity extends ActionBarActivity implements
 		mNewsTime = (TextView)findViewById(R.id.newstime);
 		mNewsContent = (TextView)findViewById(R.id.newscontent);
 		
+		ImageGetter imgGetter = new Html.ImageGetter() {  
+	        public Drawable getDrawable(String source) {  
+	              Drawable drawable = null;  
+	              URL url;    
+	              try {     
+	                  url = new URL(source);    
+	                  System.out.println("url:"+source);
+	                  drawable = Drawable.createFromStream(url.openStream(), "");  //获取网路图片  
+	              } catch (Exception e) {    
+	                  return null;    
+	              }    
+	              drawable.setBounds(0, 0,100,100);// drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());  
+	              return drawable;   
+	        }  
+		};  
+		System.out.println("before set");
+		mNewsContent.setText(Html.fromHtml("<html><head><title>TextView使用HTML</title></head><body><p><strong>强调</strong></p><p><em>斜体</em></p>"  
+                +"<p><a href=\"http://www.dreamdu.com/xhtml/\">超链接HTML入门</a>学习HTML!</p><p><font color=\"#aabb00\">颜色1"  
+                +"</p><p><font color=\"#00bbaa\">颜色2</p><h1>标题1</h1><h3>标题2</h3><h6>标题3</h6><p>大于>小于<</p><p>" +  
+                "下面是网络图片</p><img src=\"http://up.2cto.com/2012/0223/20120223100622996.gif\"/></body></html>",imgGetter,null));
 		try{
 			
 //			String str = "adada";

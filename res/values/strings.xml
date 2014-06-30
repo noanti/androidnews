@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
+<resources >
     <string name="app_name">Hi</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -10,6 +8,5 @@
     <string name="NewsTitle">若水新闻客户端教程发布啦</string>
     <string name="NewsSource">来源：loop工作室</string>
     <string name="NewsTime">2014-6-27 15：46：32</string>
-    <string name="NewsContent">的博文看到你看完费脑内的擦了大量的能力</string>
-
+	<string name="NewsContent">sad</string>
 </resources>
