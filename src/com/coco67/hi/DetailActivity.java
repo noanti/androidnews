@@ -71,25 +71,7 @@ public class DetailActivity extends ActionBarActivity implements
 		mNewsTime = (TextView)findViewById(R.id.newstime);
 		mNewsContent = (TextView)findViewById(R.id.newscontent);
 		
-<<<<<<< .mine
 		TestImageGetter imgGetter = new TestImageGetter(mNewsContent, this);
-=======
-		ImageGetter imgGetter = new Html.ImageGetter() {  
-	        public Drawable getDrawable(String source) {  
-	              Drawable drawable = null;  
-	              URL url;    
-	              try {     
-	                  url = new URL(source);
-	                  System.out.println("url:"+source);
-	                  drawable = Drawable.createFromStream(url.openStream(), "");  //获取网路图片  
-	              } catch (Exception e) {    
-	                  return null;    
-	              }    
-	              drawable.setBounds(0, 0,100,100);// drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());  
-	              return drawable;   
-	        }  
-		};  
->>>>>>> .r16
 		System.out.println("before set");
 		mNewsContent.setText(Html.fromHtml("<html><head><title>TextView使用HTML</title></head><body><p><strong>强调</strong></p><p><em>斜体</em></p>"  
                 +"<p><a href=\"http://www.dreamdu.com/xhtml/\">超链接HTML入门</a>学习HTML!</p><p><font color=\"#aabb00\">颜色1"  
