@@ -69,12 +69,14 @@ public class MainActivity extends ActionBarActivity {
 	    catelv = (HorizontalListView) findViewById(R.id.catelv);  	      
 	    //生成动态数组，并且转载数据  
 	    ArrayList<HashMap<String, String>> catelist = new ArrayList<HashMap<String, String>>();  
-	    for(int i=0;i<30;i++)  
-	    {  
-	        HashMap<String, String> map = new HashMap<String, String>();  
-	        map.put("cateItemTitle", "体育"+i);  
-	        catelist.add(map);  
-	    } 
+	    
+	    String[] str = {"焦点","体育","科技","军事","娱乐","国际","国内"};
+	    for(int i=0;i<7;i++)
+	    {
+	    	HashMap<String, String> map = new HashMap<String, String>();  
+	    	map.put("cateItemTitle", str[i]); 
+		    catelist.add(map);  
+	    }
 	    //生成适配器，数组===》ListItem  
 	    SimpleAdapter Schedule = new SimpleAdapter(this, //没什么解释  
 	                                                catelist,//数据来源   

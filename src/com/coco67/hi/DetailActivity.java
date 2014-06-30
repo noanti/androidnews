@@ -66,7 +66,7 @@ public class DetailActivity extends ActionBarActivity implements
 	              Drawable drawable = null;  
 	              URL url;    
 	              try {     
-	                  url = new URL(source);    
+	                  url = new URL(source);
 	                  System.out.println("url:"+source);
 	                  drawable = Drawable.createFromStream(url.openStream(), "");  //»ñÈ¡ÍøÂ·Í¼Æ¬  
 	              } catch (Exception e) {    
