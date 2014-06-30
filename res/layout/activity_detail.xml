@@ -34,7 +34,7 @@
 				        android:layout_marginBottom="5sp"
 				        android:layout_weight="4" 
 				        android:textSize="28sp" />
-		            
+	 	            
 		            <LinearLayout
 				        android:layout_width="match_parent"
 				        android:layout_height="match_parent"
@@ -43,11 +43,11 @@
 				        <TextView
 				            android:id="@+id/newssource"
 				            android:text="@string/NewsSource"
-				            android:layout_width="wrap_content"
+				            android:layout_width="0dip"
 				            android:layout_height="wrap_content"
 				            android:singleLine="false"
 				            android:layout_marginLeft="10sp"
-				            android:layout_marginRight="60sp"
+				            android:layout_weight="1"
 				            android:textSize="15sp"
 				            android:textColor="@color/black" />
 				        

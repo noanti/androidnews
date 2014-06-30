@@ -36,8 +36,8 @@ public class MainActivity extends ActionBarActivity {
 	    for(int i=0;i<30;i++)  
 	    {  
 	        HashMap<String, String> map = new HashMap<String, String>();  
-	        map.put("ItemTitle", "This is Title.....");  
-	        map.put("ItemBrief", "This is text.....");  
+	        map.put("ItemTitle", "习近平:要疾恶如仇对一切不正之风敢于亮剑");  
+	        map.put("ItemBrief", "\u3000\u3000"+"央视网消息(新闻联播)：中共中央政治局6月30日下午就加强改进作风制度建设进行第十六次集体学习。......");  
 	        mylist.add(map);  
 	    }  
 	    //生成适配器，数组===》ListItem  
@@ -97,20 +97,19 @@ public class MainActivity extends ActionBarActivity {
 					TextView t = (TextView)arg0.getChildAt(i).findViewById(R.id.cateitemtitle);
 					t.setBackgroundColor(0);
 				}
-				//LinearLayout item = (LinearLayout)arg0.getItemAtPosition(arg2);
-				//arg0.get
-				//item.setBackgroundColor(getResources().getColor(R.color.black));
-				//arg.setBackgroundColor(getResources().getColor(R.color.black));
-				//TextView catetitle = (TextView)arg1.findViewById(R.id.cateitemtitle);
-				//catetitle.setTextColor(getResources().getColor(R.color.white));
+//				LinearLayout item = (LinearLayout)arg0.getItemAtPosition(arg2);
+//				arg0.get
+//				item.setBackgroundColor(getResources().getColor(R.color.black));
+//				arg.setBackgroundColor(getResources().getColor(R.color.black));
+//				TextView catetitle = (TextView)arg1.findViewById(R.id.cateitemtitle);
+//				catetitle.setTextColor(getResources().getColor(R.color.white));
 				TextView t = (TextView)catelv.getChildAt(arg2).findViewById(R.id.cateitemtitle);
-				if (t.getText().equals("体育"+arg2))
-					t.setBackgroundColor(getResources().getColor(R.color.black));
+				t.setBackgroundColor(getResources().getColor(R.color.black));
 				
 			}
 	    	
 	    });
-	    int t=mainlv.getCount();
+//	    int t=mainlv.getCount();
 	}
 	@Override  
 	public boolean onCreateOptionsMenu(Menu menu) {
