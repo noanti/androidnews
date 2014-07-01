@@ -9,18 +9,20 @@
     <TextView
         android:id="@+id/itemtitle"
         android:layout_width="match_parent"
-        android:layout_height="55dip"
-        android:layout_marginTop="20dip"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dip"
         android:layout_marginLeft="10dip"
         android:layout_marginRight="10dip"
-        android:textSize="22sp" 
+        android:textSize="18sp" 
         android:textStyle="bold"/>
     
     <TextView 
         android:id="@+id/itembrief"
         android:layout_width="match_parent"
-        android:layout_height="70dip"
-        android:layout_margin="10dip"
-        android:textSize="18sp" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="-15dip"
+        android:textSize="13sp" />
 
 </LinearLayout>

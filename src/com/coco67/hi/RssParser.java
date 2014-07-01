@@ -10,22 +10,28 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import java.io.BufferedReader;
-import java.io.File;
+
+
+import android.util.Log;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;  
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
 
 public class RssParser {
 	private URL url;
-	public RssParser(String str) throws IOException{
-		url = new URL(str);
+	static String[] rssurls= {"http://news.ifeng.com/rss/index.xml","http://news.ifeng.com/mil/rss/index.xml",
+						"http://news.ifeng.com/history/rss/index.xml","http://news.ifeng.com/rss/mainland.xml",
+						"http://news.ifeng.com/rss/taiwan.xml","http://news.ifeng.com/rss/world.xml",
+						"http://news.ifeng.com/rss/society.xml"};
+	News[] newslist=new News[30];
+	public int count = 0;
+	
+	public RssParser(int ind) throws IOException{
+		url = new URL(rssurls[ind]);
 		URLConnection conn = url.openConnection();
         conn.setDoOutput(true);
         
@@ -53,31 +59,32 @@ public class RssParser {
 //            System.out.println("root3:"+root3.getNodeName());
             NodeList items=root1.getChildNodes();
             if(items!=null){  
-            	System.out.println("len:"+items.getLength());
                 for(int i=1;i<items.getLength()-1;i++){  
                     Node it=items.item(i);  
                     if (!it.getNodeName().equals("item")) continue;
                     if(it.getNodeType()==Node.ELEMENT_NODE){
-                    	News n = new News();
+                    	newslist[count] = new News();
+                    	Log.d("info", "item count:"+items.getLength());
                         for(Node node=it.getFirstChild();node!=null;node=node.getNextSibling())
                         {  
                             if(node.getNodeType()==Node.ELEMENT_NODE)
                             {  
                             	if (node.getNodeName().equals("title"))
-                            		n.title = node.getFirstChild().getNodeValue();
+                            		newslist[count].title = node.getFirstChild().getNodeValue();
                             	if (node.getNodeName().equals("description"))
                             	{                            		
                             		String raw = node.getFirstChild().getNextSibling().getNodeValue();
                             		int index = raw.indexOf("<a href=");
-                            		n.digest=raw.substring(0,index);
+                            		newslist[count].digest=raw.substring(0,index);
                             	}
                             	if (node.getNodeName().equals("link"))
-                            		n.link = node.getFirstChild().getNodeValue();
+                            		newslist[count].link = node.getFirstChild().getNodeValue();
                             	if (node.getNodeName().equals("pubDate"))
-                            		n.time = node.getFirstChild().getNodeValue();   
+                            		newslist[count].time = node.getFirstChild().getNodeValue();   
                             }                         
                         } 
-                        n.output(); System.out.println("\n");
+                        count++;
+                        if (count==30) return;
                     }  
                 }  
             }
@@ -91,13 +98,16 @@ public class RssParser {
             e.printStackTrace();  
         }  
 	}
+	public News[] getList(){
+		return newslist;
+	}
 	static public void main(String[] args)
 	{
-		try {
-			RssParser rp = new RssParser("http://news.ifeng.com/mil/rss/index.xml");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			//RssParser rp = new RssParser(0);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 	}
 
 }
