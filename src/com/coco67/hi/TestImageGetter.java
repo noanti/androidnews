@@ -60,9 +60,9 @@ public class TestImageGetter implements ImageGetter {
         @Override
         protected void onPostExecute(Drawable result) {
             // set the correct bound according to the result from HTTP call
-            urlDrawable.setBounds(0, 0, 0 + result.getIntrinsicWidth(), 0 
-                    + result.getIntrinsicHeight()); 
-
+            int w = result.getIntrinsicWidth();
+            int h = result.getIntrinsicHeight();
+            result.setBounds(0,-80,w,h);
             // change the reference of the current drawable to the result
             // from the HTTP call
             urlDrawable.drawable = result;
@@ -80,7 +80,9 @@ public class TestImageGetter implements ImageGetter {
             try {
                 InputStream is = fetch(urlString);
                 Drawable drawable = Drawable.createFromStream(is, "src");
-                drawable.setBounds(0, 0, drawable.getIntrinsicWidth()*2,drawable.getIntrinsicHeight()*2); 
+                int w = drawable.getIntrinsicWidth();
+                int h = drawable.getIntrinsicHeight();
+                drawable.setBounds(0,-80,w,h);//, -30, drawable.getIntrinsicWidth(),drawable.getIntrinsicHeight());
                 return drawable;
             } catch (Exception e) {
                 return null;

@@ -64,7 +64,7 @@ public class DetailActivity extends ActionBarActivity implements
 		System.out.println("before set");
 		mNewsContent.setText(Html.fromHtml("<html><head><title>TextView使用HTML</title></head><body><p><strong>强调</strong></p><p><em>斜体</em></p>"  
                 +"<p><a href=\"http://www.dreamdu.com/xhtml/\">超链接HTML入门</a>学习HTML!</p><p><font color=\"#aabb00\">颜色1"  
-                +"</p><p><font color=\"#00bbaa\">颜色2</p><h1>标题1</h1><h3>标题2</h3><h6>标题3</h6><p>大于>小于<</p><p>" +  
+                +"</p><p><font color=\"#00bbaa\">颜色2</p><h1>标题1</h1><img src=\"http://www.imhdr.com/wp-content/uploads/2013/06/20130616234511_46680.png\"/><h3>标题2</h3><h6>标题3</h6><p>大于>小于<</p><p>" +  
                 "下面是网络图片</p><img src=\"http://n.sinaimg.cn/transform/20140630/avxeafr1879693.jpg\"/><p>大于>小于<</p></body></html>",imgGetter,null));
 		try{
 			
