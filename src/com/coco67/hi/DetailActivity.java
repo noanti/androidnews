@@ -21,6 +21,7 @@ public class DetailActivity extends ActionBarActivity implements
         OnClickListener, OnGestureListener {
 	
 	String[] str = new String[]{"综合","军事","历史","大陆","台湾","国际","社会"};
+	
 	private ImageButton goback;
 	private TextView mTitleTextView;
     private TextView mNewsTitle;
@@ -55,16 +56,21 @@ public class DetailActivity extends ActionBarActivity implements
 		mNewsTitle = (TextView)findViewById(R.id.newstitle);
 		mNewsTime = (TextView)findViewById(R.id.newstime);
 		mNewsContent = (TextView)findViewById(R.id.newscontent);
+		
 		try{
+			
 			Intent intent = getIntent();
 			int currentPage = intent.getIntExtra("currentPage",0);
 			String title = intent.getStringExtra("title");
 			String link = intent.getStringExtra("link");
 			String time = intent.getStringExtra("time");
-			
+					
 			mTitleTextView.setText(str[currentPage]);
-			mNewsTitle.setText(title);
-			mNewsTime.setText(time);
+			mNewsTitle.setText(title);	
+			
+			//转换日期显示格式，例如：12 jun 2014 01:27:14换成12/jun/2014 01:27:14
+			String[] Time = time.split(" ");
+			mNewsTime.setText(Time[0]+"/"+Time[1]+"/"+Time[2]+" "+" "+Time[3]);
 			
 			TestImageGetter imgGetter = new TestImageGetter(mNewsContent, this);
 			mNewsContent.setText(Html.fromHtml("<html><head><title>TextView使用HTML</title></head><body><p><strong>强调</strong></p><p><em>斜体</em></p>"  

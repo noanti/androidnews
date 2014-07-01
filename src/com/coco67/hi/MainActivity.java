@@ -90,10 +90,7 @@ public class MainActivity extends ActionBarActivity {
 				t.setBackgroundColor(getResources().getColor(R.color.black));
 				setmainlv(arg2);
 				currentPage=arg2;
-				//°Ñarg2´«¸øDetailActivity
-			}
-				
-	    	
+			}			    	
 	    });
 	    setmainlv(0);
 	}
