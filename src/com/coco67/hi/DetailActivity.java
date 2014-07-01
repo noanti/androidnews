@@ -20,13 +20,10 @@ import android.widget.TextView;
 public class DetailActivity extends ActionBarActivity implements
         OnClickListener, OnGestureListener {
 	
-	int i = 0;
-	
-	private String[] str = null;
+	String[] str = new String[]{"综合","军事","历史","大陆","台湾","国际","社会"};
 	private ImageButton goback;
 	private TextView mTitleTextView;
     private TextView mNewsTitle;
-    private TextView mNewsSource;
     private TextView mNewsTime;
     private TextView mNewsContent;
 
@@ -53,23 +50,23 @@ public class DetailActivity extends ActionBarActivity implements
 	}
 	
 	private void setupviews() {
-		// TODO Auto-generated method stub
 		
 		mTitleTextView = (TextView)findViewById(R.id.app_detail_title);
 		mNewsTitle = (TextView)findViewById(R.id.newstitle);
-		mNewsSource = (TextView)findViewById(R.id.newssource);
 		mNewsTime = (TextView)findViewById(R.id.newstime);
 		mNewsContent = (TextView)findViewById(R.id.newscontent);
-
 		try{
-			
-			str = new String[]{"综合","军事","历史","大陆","台湾","国际","社会"};
 			Intent intent = getIntent();
-			i = intent.getIntExtra("i",0);
-			mTitleTextView.setText(str[i]);
+			int currentPage = intent.getIntExtra("currentPage",0);
+			String title = intent.getStringExtra("title");
+			String link = intent.getStringExtra("link");
+			String time = intent.getStringExtra("time");
+			
+			mTitleTextView.setText(str[currentPage]);
+			mNewsTitle.setText(title);
+			mNewsTime.setText(time);
 			
 			TestImageGetter imgGetter = new TestImageGetter(mNewsContent, this);
-			System.out.println("before set");
 			mNewsContent.setText(Html.fromHtml("<html><head><title>TextView使用HTML</title></head><body><p><strong>强调</strong></p><p><em>斜体</em></p>"  
 	                +"<p><a href=\"http://www.dreamdu.com/xhtml/\">超链接HTML入门</a>学习HTML!</p><p><font color=\"#aabb00\">颜色1"  
 	                +"</p><p><font color=\"#00bbaa\">颜色2</p><h1>标题1</h1><img src=\"http://www.imhdr.com/wp-content/uploads/2013/06/20130616234511_46680.png\"/><h3>标题2</h3><h6>标题3</h6><p>大于>小于<</p><p>" +  
@@ -138,26 +135,22 @@ public class DetailActivity extends ActionBarActivity implements
 
 	@Override
 	public void onLongPress(MotionEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public boolean onScroll(MotionEvent arg0, MotionEvent arg1, float arg2,
 			float arg3) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public void onShowPress(MotionEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public boolean onSingleTapUp(MotionEvent arg0) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

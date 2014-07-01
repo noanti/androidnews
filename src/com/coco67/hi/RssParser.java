@@ -80,7 +80,10 @@ public class RssParser {
                             	if (node.getNodeName().equals("link"))
                             		newslist[count].link = node.getFirstChild().getNodeValue();
                             	if (node.getNodeName().equals("pubDate"))
-                            		newslist[count].time = node.getFirstChild().getNodeValue();   
+                            	{
+                            		String raw = node.getFirstChild().getNodeValue();                            		
+                            		newslist[count].time=raw.substring(5, raw.length()-5);
+                            	}                         		
                             }                         
                         } 
                         count++;

@@ -27,16 +27,16 @@
 				        android:layout_width="match_parent"
 				        android:layout_height="0dip"
 				        android:layout_marginLeft="10sp"
-				        android:layout_marginTop="25sp"
+				        android:layout_marginTop="15sp"
 				        android:layout_marginBottom="5sp"
 				        android:layout_weight="4" 
 				        android:textSize="28sp" />
-	 	            
+	 	            <!--  
 		            <LinearLayout
 				        android:layout_width="match_parent"
 				        android:layout_height="match_parent"
 				        android:orientation="horizontal" >
-				        
+			
 				        <TextView
 				            android:id="@+id/newssource"
 				            android:text="@string/NewsSource"
@@ -45,19 +45,20 @@
 				            android:singleLine="false"
 				            android:layout_marginLeft="10sp"
 				            android:layout_weight="1"
-				            android:textSize="15sp"
-				            android:textColor="@color/black" />
+				            android:textSize="13sp"
+				            android:textColor="@color/black" /> -->
+
+		                <TextView
+		                    android:id="@+id/newstime"
+		                    android:layout_width="wrap_content"
+		                    android:layout_height="wrap_content"
+		                    android:layout_marginRight="10sp"
+		                    android:layout_gravity="right"
+		                    android:text="@string/NewsTime"
+		                    android:textColor="@color/black"
+		                    android:textAlignment="textEnd"
+		                    android:textSize="15sp" />
 				        
-				        <TextView
-				            android:id="@+id/newstime"
-				            android:text="@string/NewsTime"
-				            android:layout_width="wrap_content"
-				            android:layout_height="wrap_content"
-				            android:layout_marginRight="10sp"
-				            android:textSize="15sp"
-				            android:textColor="@color/black" />
-				        
-				    </LinearLayout>
 				    
 		            <ImageView 
 		                android:layout_width="match_parent"

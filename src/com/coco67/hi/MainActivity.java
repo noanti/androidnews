@@ -22,11 +22,12 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
 
 	private HorizontalListView catelv;
+	int currentPage=0;
+	News[] list;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -43,10 +44,11 @@ public class MainActivity extends ActionBarActivity {
 	    	@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
-				Toast.makeText(getApplicationContext(), "count:"+arg0.getCount(),
-					     Toast.LENGTH_SHORT).show();
-				
-				Intent intent = new Intent(MainActivity.this, DetailActivity.class);			  
+	    		Intent intent = new Intent(MainActivity.this,DetailActivity.class);
+				intent.putExtra("currentPage", currentPage);
+				intent.putExtra("link",list[arg2].link);
+				intent.putExtra("title",list[arg2].title);
+				intent.putExtra("time",list[arg2].time);
 				startActivity(intent);
 				
 			}
@@ -87,11 +89,8 @@ public class MainActivity extends ActionBarActivity {
 				TextView t = (TextView)catelv.getChildAt(arg2).findViewById(R.id.cateitemtitle);
 				t.setBackgroundColor(getResources().getColor(R.color.black));
 				setmainlv(arg2);
-				
+				currentPage=arg2;
 				//°Ñarg2´«¸øDetailActivity
-				Intent intent = new Intent(MainActivity.this,DetailActivity.class);
-				intent.putExtra("i", arg2);
-				startActivity(intent);
 			}
 				
 	    	
@@ -101,7 +100,6 @@ public class MainActivity extends ActionBarActivity {
 
 	public void setmainlv(int ind)
 	{
-		News[] list;
 		RssParser rp = null;
 		try {
 			rp = new RssParser(ind);
