@@ -1,11 +1,9 @@
 package com.coco67.hi;
 
-
-
-
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.text.Html;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -22,6 +20,9 @@ import android.widget.TextView;
 public class DetailActivity extends ActionBarActivity implements
         OnClickListener, OnGestureListener {
 	
+	int i = 0;
+	
+	private String[] str = null;
 	private ImageButton goback;
 	private TextView mTitleTextView;
     private TextView mNewsTitle;
@@ -54,27 +55,25 @@ public class DetailActivity extends ActionBarActivity implements
 	private void setupviews() {
 		// TODO Auto-generated method stub
 		
-		mTitleTextView = (TextView)findViewById(R.id.detail_title);
+		mTitleTextView = (TextView)findViewById(R.id.app_detail_title);
 		mNewsTitle = (TextView)findViewById(R.id.newstitle);
 		mNewsSource = (TextView)findViewById(R.id.newssource);
 		mNewsTime = (TextView)findViewById(R.id.newstime);
 		mNewsContent = (TextView)findViewById(R.id.newscontent);
-		
-		TestImageGetter imgGetter = new TestImageGetter(mNewsContent, this);
-		System.out.println("before set");
-		mNewsContent.setText(Html.fromHtml("<html><head><title>TextView使用HTML</title></head><body><p><strong>强调</strong></p><p><em>斜体</em></p>"  
-                +"<p><a href=\"http://www.dreamdu.com/xhtml/\">超链接HTML入门</a>学习HTML!</p><p><font color=\"#aabb00\">颜色1"  
-                +"</p><p><font color=\"#00bbaa\">颜色2</p><h1>标题1</h1><img src=\"http://www.imhdr.com/wp-content/uploads/2013/06/20130616234511_46680.png\"/><h3>标题2</h3><h6>标题3</h6><p>大于>小于<</p><p>" +  
-                "下面是网络图片</p><img src=\"http://n.sinaimg.cn/transform/20140630/avxeafr1879693.jpg\"/><p>大于>小于<</p></body></html>",imgGetter,null));
+
 		try{
 			
-//			String str = "adada";
-//			
-//			mTitleTextView.setText(str+"erfwf");
-//			mNewsTitle.setText(str.toString()+"wdqda");
-//			mNewsSource.setText(str.toString()+"wdqda");
-//			mNewsTime.setText(str.toString()+"wdqda");
-//			mNewsContent.setText(str.toString()+"wdqda");		
+			str = new String[]{"综合","军事","历史","大陆","台湾","国际","社会"};
+			Intent intent = getIntent();
+			i = intent.getIntExtra("i",0);
+			mTitleTextView.setText(str[i]);
+			
+			TestImageGetter imgGetter = new TestImageGetter(mNewsContent, this);
+			System.out.println("before set");
+			mNewsContent.setText(Html.fromHtml("<html><head><title>TextView使用HTML</title></head><body><p><strong>强调</strong></p><p><em>斜体</em></p>"  
+	                +"<p><a href=\"http://www.dreamdu.com/xhtml/\">超链接HTML入门</a>学习HTML!</p><p><font color=\"#aabb00\">颜色1"  
+	                +"</p><p><font color=\"#00bbaa\">颜色2</p><h1>标题1</h1><img src=\"http://www.imhdr.com/wp-content/uploads/2013/06/20130616234511_46680.png\"/><h3>标题2</h3><h6>标题3</h6><p>大于>小于<</p><p>" +  
+	                "下面是网络图片</p><img src=\"http://n.sinaimg.cn/transform/20140630/avxeafr1879693.jpg\"/><p>大于>小于<</p></body></html>",imgGetter,null));	
 			
 		}catch (Exception e) {
 			e.printStackTrace();

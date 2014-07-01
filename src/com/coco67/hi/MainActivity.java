@@ -87,6 +87,11 @@ public class MainActivity extends ActionBarActivity {
 				TextView t = (TextView)catelv.getChildAt(arg2).findViewById(R.id.cateitemtitle);
 				t.setBackgroundColor(getResources().getColor(R.color.black));
 				setmainlv(arg2);
+				
+				//°Ñarg2´«¸øDetailActivity
+				Intent intent = new Intent(MainActivity.this,DetailActivity.class);
+				intent.putExtra("i", arg2);
+				startActivity(intent);
 			}
 				
 	    	
