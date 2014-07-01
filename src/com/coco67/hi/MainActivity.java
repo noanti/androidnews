@@ -19,7 +19,6 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -40,27 +39,6 @@ public class MainActivity extends ActionBarActivity {
 	    setContentView(R.layout.activity_main);
 	    
 		ListView mainlv = (ListView) findViewById(R.id.mainlv);  	      
-//	    //生成动态数组，并且转载数据  
-//	    ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();  
-//	    for(int i=0;i<30;i++)  
-//	    {  
-//	        HashMap<String, String> map = new HashMap<String, String>();  
-//	        map.put("ItemTitle", "习近平:要疾恶如仇对一切不正之风敢于亮剑");  
-//	        map.put("ItemBrief", "\u3000\u3000"+"央视网消息(新闻联播)：中共中央政治局6月30日下午就加强改进作风制度建设进行第十六次集体学习。......");  
-//	        mylist.add(map);  
-//	    }  
-//	    //生成适配器，数组===》ListItem  
-//	    SimpleAdapter mSchedule = new SimpleAdapter(this, //没什么解释  
-//	                                                mylist,//数据来源   
-//	                                                R.layout.listitem,//ListItem的XML实现  
-//	                                                  
-//	                                                //动态数组与ListItem对应的子项          
-//	                                                new String[] {"ItemTitle", "ItemBrief"},   
-//	                                                  
-//	                                                //ListItem的XML文件里面的两个TextView ID  
-//	                                                new int[] {R.id.itemtitle,R.id.itembrief});  
-//	    //添加并且显示  
-//	    mainlv.setAdapter(mSchedule);
 	    mainlv.setOnItemClickListener(new OnItemClickListener() {
 	    	@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
@@ -108,50 +86,48 @@ public class MainActivity extends ActionBarActivity {
 				
 				TextView t = (TextView)catelv.getChildAt(arg2).findViewById(R.id.cateitemtitle);
 				t.setBackgroundColor(getResources().getColor(R.color.black));
-				News[] list;
-				RssParser rp = null;
-				try {
-					Log.d("info", "before new parser");
-					rp = new RssParser(arg2);
-					Log.d("info", "after new parser");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				list = rp.getList();
-				Log.d("info", "after getlist");
-				ListView mainlv = (ListView) findViewById(R.id.mainlv);  	      
-			    //生成动态数组，并且转载数据  
-			    ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();  
-			    Log.d("info", "list length:"+list.length);
-			    for(int i=0;i<rp.count;i++)  
-			    {  
-			        HashMap<String, String> map = new HashMap<String, String>();  
-			        map.put("ItemTitle", list[i].title);  
-			        map.put("ItemBrief", list[i].digest);  
-			        mylist.add(map);  
-			    }  
-			    //生成适配器，数组===》ListItem  
-			    SimpleAdapter mSchedule = new SimpleAdapter(MainActivity.this, //没什么解释  
-			                                                mylist,//数据来源   
-			                                                R.layout.listitem,//ListItem的XML实现  
-			                                                  
-			                                                //动态数组与ListItem对应的子项          
-			                                                new String[] {"ItemTitle", "ItemBrief"},   
-			                                                  
-			                                                //ListItem的XML文件里面的两个TextView ID  
-			                                                new int[] {R.id.itemtitle,R.id.itembrief});
-			    //添加并且显示  
-			    mainlv.setAdapter(mSchedule);
-			    Log.d("info", "after setadapter");
+				setmainlv(arg2);
 			}
 				
 	    	
 	    });
+	    setmainlv(0);
 	}
-	@Override
-	public void onStart(){
-		Button.
+
+	public void setmainlv(int ind)
+	{
+		News[] list;
+		RssParser rp = null;
+		try {
+			rp = new RssParser(ind);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		list = rp.getList();
+		Log.d("info", "after getlist");
+		ListView mainlv = (ListView) findViewById(R.id.mainlv);  	      
+	    //生成动态数组，并且转载数据  
+	    ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();  
+	    for(int i=0;i<rp.count;i++)  
+	    {  
+	        HashMap<String, String> map = new HashMap<String, String>();  
+	        map.put("ItemTitle", list[i].title);  
+	        map.put("ItemBrief", list[i].digest);  
+	        mylist.add(map);  
+	    }  
+	    //生成适配器，数组===》ListItem  
+	    SimpleAdapter mSchedule = new SimpleAdapter(MainActivity.this, //没什么解释  
+	                                                mylist,//数据来源   
+	                                                R.layout.listitem,//ListItem的XML实现  
+	                                                  
+	                                                //动态数组与ListItem对应的子项          
+	                                                new String[] {"ItemTitle", "ItemBrief"},   
+	                                                  
+	                                                //ListItem的XML文件里面的两个TextView ID  
+	                                                new int[] {R.id.itemtitle,R.id.itembrief});
+	    //添加并且显示  
+	    mainlv.setAdapter(mSchedule);
+		
 	}
 	@Override  
 	public boolean onCreateOptionsMenu(Menu menu) {
